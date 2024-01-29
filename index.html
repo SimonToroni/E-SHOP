@@ -1,37 +1,68 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<html>
+<html lang="en">
+
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <title>E-Shop.cz</title>
     <link rel="stylesheet" href="barvy.css">
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 10000); // Změňte hodnotu na délku zobrazení jednoho obrázku v milisekundách (v tomto případě 10 sekund).
+        }
+
+        document.addEventListener("DOMContentLoaded", showSlides);
+    </script>
 </head>
+
 <body>
-  <header>
-    <div class="eshop">
-      <a href="index.html"><img src="https://i.ibb.co/tzxfyYB/logo.png" alt="E-Shop.cz" width="250"></a>
+    <header>
+        <div class="eshop">
+            <a href="index.html"><img src="https://i.ibb.co/tzxfyYB/logo.png" alt="E-Shop.cz" width="10"></a>
+        </div>
+        <div class="search">
+            <form><input type="text" placeholder="Vyhledat produkt..."></form>
+            <script src="search.js"></script>
+        </div>
+        <div class="login">
+            <img src="https://i.ibb.co/f414nqW/users.png" alt="users" width="30"></a>
+            <div class="login-links">
+                <a href="prihlaseni.html">Přihlášení</a>
+                <a href="registrace.html">Registrace</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="image1.jpg" alt="Product 1">
+        </div>
+        <div class="slide fade">
+            <img src="image2.jpg" alt="Product 2">
+        </div>
     </div>
-    <div class="search">
-        <form><input type="text" placeholder="Vyhledat produkt..."></form>
-        <script src="search.js"></script>
-    </div> 
-    <div class="login">
-      <img src="https://i.ibb.co/f414nqW/users.png" alt="users" width="30"></a>
-      <div class="login-links">
-          <a href="prihlaseni.html">Přihlášení</a>
-          <a href="registrace.html">Registrace</a>
-      </div>
-  </div>
-  
-  </header>
-  <p><strong>Kategorie</strong></p>
-  <ul>
-    <li><a href="index.html"><p>Počítače.</p></a></li>
-    <li><a href="index.html"><p>Monitory</p></a></li>
-    <li><a href="komponenty.html"><p>Komponenty</p></a></li>
-    <li><a href="index.html"><p>Myše a klávesnice</p></a>
-  </ul>
+
+    <p><strong>Kategorie</strong></p>
+    <ul>
+        <li><a href="index.html"><p>Počítače.</p></a></li>
+        <li><a href="index.html"><p>Monitory</p></a></li>
+        <li><a href="komponenty.html"><p>Komponenty</p></a></li>
+        <li><a href="index.html"><p>Myše a klávesnice</p></a></li>
+    </ul>
 </body>
+
 </html>
