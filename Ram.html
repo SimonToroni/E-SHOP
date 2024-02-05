@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte paměť RAM</title>
+    <style>
+        .ram {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+        }
+
+        .ram img {
+            max-width: 100px;
+        }
+
+        select {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte paměť RAM</h1>
+    <div class="ram">
+        <h2>Paměť RAM 1</h2>
+        <img src="ram1.jpg" alt="Obrázek paměti RAM 1">
+        <select id="ram1">
+            <option value="0">Vyberte paměť RAM</option>
+            <option value="100">Corsair Vengeance LPX 8GB - 100 Kč</option>
+            <option value="200">G.SKILL Ripjaws V Series 16GB - 200 Kč</option>
+            <option value="300">Kingston HyperX Fury RGB 32GB - 300 Kč</option>
+        </select>
+    </div>
+
+    <div class="ram">
+        <h2>Paměť RAM 2</h2>
+        <img src="ram2.jpg" alt="Obrázek paměti RAM 2">
+        <select id="ram2">
+            <option value="0">Vyberte paměť RAM</option>
+            <option value="150">Corsair Dominator Platinum RGB 16GB - 150 Kč</option>
+            <option value="250">G.SKILL Trident Z RGB 32GB - 250 Kč</option>
+            <option value="350">Kingston HyperX Predator RGB 64GB - 350 Kč</option>
+        </select>
+    </div>
+
+    <div class="ram">
+        <h2>Paměť RAM 3</h2>
+        <img src="ram3.jpg" alt="Obrázek paměti RAM 3">
+        <select id="ram3">
+            <option value="0">Vyberte paměť RAM</option>
+            <option value="120">Crucial Ballistix 8GB - 120 Kč</option>
+            <option value="220">Patriot Viper Steel Series 16GB - 220 Kč</option>
+            <option value="320">Team T-Force DARK Za 32GB - 320 Kč</option>
+        </select>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const ram1Select = document.getElementById("ram1");
+        const ram2Select = document.getElementById("ram2");
+        const ram3Select = document.getElementById("ram3");
+        const totalPrice = document.getElementById("totalPrice");
+
+        ram1Select.addEventListener("change", updateTotalPrice);
+        ram2Select.addEventListener("change", updateTotalPrice);
+        ram3Select.addEventListener("change", updateTotalPrice);
+
+        function updateTotalPrice() {
+            const price1 = parseFloat(ram1Select.value);
+            const price2 = parseFloat(ram2Select.value);
+            const price3 = parseFloat(ram3Select.value);
+
+            const total = price1 + price2 + price3;
+
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>

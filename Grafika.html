@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte grafickou kartu</title>
+    <style>
+        .graphics-card {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+        }
+
+        .graphics-card img {
+            max-width: 100px;
+        }
+
+        select {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte grafickou kartu</h1>
+    <div class="graphics-card">
+        <h2>Grafická karta 1</h2>
+        <img src="graficka_karta1.jpg" alt="Obrázek grafické karty 1">
+        <select id="graphicsCard1">
+            <option value="0">Vyberte grafickou kartu</option>
+            <option value="200">NVIDIA GeForce RTX 3060 - 200 Kč</option>
+            <option value="300">NVIDIA GeForce RTX 3070 - 300 Kč</option>
+            <option value="400">AMD Radeon RX 6700 XT - 400 Kč</option>
+        </select>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 2</h2>
+        <img src="graficka_karta2.jpg" alt="Obrázek grafické karty 2">
+        <select id="graphicsCard2">
+            <option value="0">Vyberte grafickou kartu</option>
+            <option value="250">NVIDIA GeForce RTX 3080 - 250 Kč</option>
+            <option value="350">NVIDIA GeForce RTX 3090 - 350 Kč</option>
+            <option value="450">AMD Radeon RX 6800 XT - 450 Kč</option>
+        </select>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 3</h2>
+        <img src="graficka_karta3.jpg" alt="Obrázek grafické karty 3">
+        <select id="graphicsCard3">
+            <option value="0">Vyberte grafickou kartu</option>
+            <option value="300">NVIDIA GeForce GTX 1660 - 300 Kč</option>
+            <option value="400">NVIDIA GeForce RTX 3060 Ti - 400 Kč</option>
+            <option value="500">AMD Radeon RX 6900 XT - 500 Kč</option>
+        </select>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const graphicsCard1Select = document.getElementById("graphicsCard1");
+        const graphicsCard2Select = document.getElementById("graphicsCard2");
+        const graphicsCard3Select = document.getElementById("graphicsCard3");
+        const totalPrice = document.getElementById("totalPrice");
+
+        graphicsCard1Select.addEventListener("change", updateTotalPrice);
+        graphicsCard2Select.addEventListener("change", updateTotalPrice);
+        graphicsCard3Select.addEventListener("change", updateTotalPrice);
+
+        function updateTotalPrice() {
+            const price1 = parseFloat(graphicsCard1Select.value);
+            const price2 = parseFloat(graphicsCard2Select.value);
+            const price3 = parseFloat(graphicsCard3Select.value);
+
+            const total = price1 + price2 + price3;
+
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>
