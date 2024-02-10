@@ -164,22 +164,18 @@ button {
 .slide {
     width: 100%;
     display: none;
+    animation: slide 6s ease-in-out infinite;
 }
 
-.fade {
-    animation: fade 6s ease-in-out infinite;
-}
-
-@keyframes fade {
-    from {
-        opacity: 1;
+@keyframes slide {
+    0%, 95% {
+        transform: translateX(0);
     }
-
-    to {
-        opacity: 0.5;
+    100% {
+        transform: translateX(-100%);
     }
 }
-
+    
 .bottom-part-full {
     justify-content: center;
     align-items: center;
