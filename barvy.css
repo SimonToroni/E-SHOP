@@ -29,7 +29,7 @@ header {
 
 @media (max-width: 600px) {
     .eshop img {
-        max-width: 150px; /* Adjust the maximum width of the logo for phones */
+        max-width: 100px; /* Adjust the maximum width of the logo for phones */
     }
 }
 
@@ -177,6 +177,7 @@ button {
 }
     
 .bottom-part-full {
+    margin: 0 10px;
     justify-content: center;
     align-items: center;
     background: #52e24571;
