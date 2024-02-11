@@ -179,7 +179,7 @@ button {
 .slide {
     width: 100%;
     display: none;
-    animation: slide 8s ease-in-out infinite;
+    animation: slide 6s ease-in-out infinite;
 }
 
 @keyframes slide {
@@ -197,7 +197,7 @@ button {
     align-items: center;
     background: #52e24571;
     background: linear-gradient(45deg, #52e24571, #e6900e7e);
-    position: absolute; /* POTOM NA RELATIVE */
+    position: absolute; /* POTOM NA RELATIVE VOLE */
     bottom: 0;
     left: 0;
     right: 0;
