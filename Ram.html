@@ -5,76 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vyberte paměť RAM</title>
     <style>
-        .ram {
+        .ram-module {
             display: inline-block; 
             margin: 10px;
             width: 200px; 
             text-align: center;
+            cursor: pointer; 
         }
 
-        .ram img {
+        .ram-module img {
             max-width: 100px;
-        }
-
-        select {
-            width: 100%;
         }
     </style>
 </head>
 <body>
     <h1>Vyberte paměť RAM</h1>
-    <div class="ram">
-        <h2>Paměť RAM 1</h2>
-        <img src="ram1.jpg" alt="Obrázek paměti RAM 1">
-        <select id="ram1">
-            <option value="0">Vyberte paměť RAM</option>
-            <option value="100">Corsair Vengeance LPX 8GB - 100 Kč</option>
-            <option value="200">G.SKILL Ripjaws V Series 16GB - 200 Kč</option>
-            <option value="300">Kingston HyperX Fury RGB 32GB - 300 Kč</option>
-        </select>
+
+    <div class="ram-module">
+        <h2>RAM modul 1</h2>
+        <img src="" alt="Obrázek paměti RAM 1">
+        <p>Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz</p>
     </div>
 
-    <div class="ram">
-        <h2>Paměť RAM 2</h2>
-        <img src="ram2.jpg" alt="Obrázek paměti RAM 2">
-        <select id="ram2">
-            <option value="0">Vyberte paměť RAM</option>
-            <option value="150">Corsair Dominator Platinum RGB 16GB - 150 Kč</option>
-            <option value="250">G.SKILL Trident Z RGB 32GB - 250 Kč</option>
-            <option value="350">Kingston HyperX Predator RGB 64GB - 350 Kč</option>
-        </select>
+    <div class="ram-module">
+        <h2>RAM modul 2</h2>
+        <img src="" alt="Obrázek paměti RAM 2">
+        <p>G.SKILL Ripjaws V 32GB (2x16GB) DDR4 3600MHz</p>
     </div>
 
-    <div class="ram">
-        <h2>Paměť RAM 3</h2>
-        <img src="ram3.jpg" alt="Obrázek paměti RAM 3">
-        <select id="ram3">
-            <option value="0">Vyberte paměť RAM</option>
-            <option value="120">Crucial Ballistix 8GB - 120 Kč</option>
-            <option value="220">Patriot Viper Steel Series 16GB - 220 Kč</option>
-            <option value="320">Team T-Force DARK Za 32GB - 320 Kč</option>
-        </select>
+    <div class="ram-module">
+        <h2>RAM modul 3</h2>
+        <img src="" alt="Obrázek paměti RAM 3">
+        <p>Crucial Ballistix 8GB DDR4 2666MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 4</h2>
+        <img src="" alt="Obrázek paměti RAM 4">
+        <p>Team T-FORCE Vulcan Z 16GB (2x8GB) DDR4 3000MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 5</h2>
+        <img src="" alt="Obrázek paměti RAM 5">
+        <p>HyperX Fury 32GB (2x16GB) DDR4 3200MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 6</h2>
+        <img src="" alt="Obrázek paměti RAM 6">
+        <p>Patriot Viper Steel 16GB (2x8GB) DDR4 4400MHz</p>
     </div>
 
     <p id="totalPrice">Celková cena: 0 Kč</p>
 
     <script>
-        const ram1Select = document.getElementById("ram1");
-        const ram2Select = document.getElementById("ram2");
-        const ram3Select = document.getElementById("ram3");
+        const ramModules = document.querySelectorAll(".ram-module");
         const totalPrice = document.getElementById("totalPrice");
 
-        ram1Select.addEventListener("change", updateTotalPrice);
-        ram2Select.addEventListener("change", updateTotalPrice);
-        ram3Select.addEventListener("change", updateTotalPrice);
+        ramModules.forEach(module => {
+            module.addEventListener("click", updateTotalPrice);
+        });
 
         function updateTotalPrice() {
-            const price1 = parseFloat(ram1Select.value);
-            const price2 = parseFloat(ram2Select.value);
-            const price3 = parseFloat(ram3Select.value);
-
-            const total = price1 + price2 + price3;
-
+            let total = 0;
+            ramModules.forEach(module => {
+                const moduleText = module.querySelector("p").textContent;
+                const modulePrice = parseInt(moduleText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(modulePrice)) { // Проверяем, что удалось получить число
+                    total += modulePrice;
+                }
+            });
             totalPrice.textContent = `Celková cena: ${total} Kč`;
         }
     </script>
