@@ -3,91 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procesory</title>
-    <head>
-        <style>
-            .processor {
-                margin: 10px;
-            }
-
-                .processor img {
-                    max-width: 100px;
-                }
-
-            h1 {
-                margin-top: 20px; 
-            }
-        </style>
-    </head>
-    <body>
-
-</head>
-<body>
+    <title>Vyberte procesor</title>
     <style>
         .processor {
             display: inline-block; 
             margin: 10px;
             width: 200px; 
             text-align: center;
+            cursor: pointer; 
         }
 
-            .processor img {
-                max-width: 100px;
-            }
+        .processor img {
+            max-width: 100px;
+        }
     </style>
-    </head>
-    <body>
-        <h1>Vyberte procesor</h1>
-        <div class="processor">
-            <h2>Procesor 1</h2>
-            <img src="procesor1.jpg" alt="Obrázek procesoru 1">
-            <select id="processor1">
-                <option value="0">Vyberte procesor</option>
-                <option value="200">Intel Core i5 - 200 Kč</option>
-                <option value="300">Intel Core i7 - 300 Kč</option>
-                <option value="400">AMD Ryzen 5 - 400 Kč</option>
-            </select>
-        </div>
+</head>
+<body>
+    <h1>Vyberte procesor</h1>
 
-        <div class="processor">
-            <h2>Procesor 2</h2>
-            <img src="procesor2.jpg" alt="Obrázek procesoru 2">
-            <select id="processor2">
-                <option value="0">Vyberte procesor</option>
-                <option value="250">Intel Core i3 - 250 Kč</option>
-                <option value="350">Intel Core i9 - 350 Kč</option>
-                <option value="450">AMD Ryzen 7 - 450 Kč</option>
-            </select>
-        </div>
+    <div class="processor">
+        <h2>Procesor 1</h2>
+        <img src="" alt="Obrázek procesoru 1">
+        <p>Intel Core i5-11600K</p>
+    </div>
 
-        <div class="processor">
-            <h2>Procesor 3</h2>
-            <img src="procesor3.jpg" alt="Obrázek procesoru 3">
-            <select id="processor2">
-                <option value="0">Vyberte procesor</option>
-                <option value="250">Intel Core i3 - 250 Kč</option>
-                <option value="350">Intel Core i9 - 350 Kč</option>
-                <option value="450">AMD Ryzen 7 - 450 Kč</option>
-            </select>
-        </div>
+    <div class="processor">
+        <h2>Procesor 2</h2>
+        <img src="" alt="Obrázek procesoru 2">
+        <p>AMD Ryzen 7 5800X</p>
+    </div>
 
+    <div class="processor">
+        <h2>Procesor 3</h2>
+        <img src="" alt="Obrázek procesoru 3">
+        <p>Intel Core i9-11900K</p>
+    </div>
 
-        <script>
-            const processor1Select = document.getElementById("processor1");
-            const processor2Select = document.getElementById("processor2");
-            const totalPrice = document.getElementById("totalPrice");
-            processor1Select.addEventListener("change", updateTotalPrice);
-            processor2Select.addEventListener("change", updateTotalPrice);
+    <div class="processor">
+        <h2>Procesor 4</h2>
+        <img src="" alt="Obrázek procesoru 4">
+        <p>AMD Ryzen 9 5900X</p>
+    </div>
 
-            function updateTotalPrice() {
-                const price1 = parseFloat(processor1Select.value);
-                const price2 = parseFloat(processor2Select.value);
+    <div class="processor">
+        <h2>Procesor 5</h2>
+        <img src="" alt="Obrázek procesoru 5">
+        <p>Intel Core i7-11700K</p>
+    </div>
 
-                const total = price1 + price2;
+    <div class="processor">
+        <h2>Procesor 6</h2>
+        <img src="" alt="Obrázek procesoru 6">
+        <p>AMD Ryzen 5 5600X</p>
+    </div>
 
-                totalPrice.textContent = `Celková cena: ${total} Kč`;
-            }
-        </script>
-    </body>
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const processors = document.querySelectorAll(".processor");
+        const totalPrice = document.getElementById("totalPrice");
+
+        processors.forEach(processor => {
+            processor.addEventListener("click", updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            let total = 0;
+            processors.forEach(processor => {
+                const processorText = processor.querySelector("p").textContent;
+                const processorPrice = parseInt(processorText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(processorPrice)) { // Проверяем, что удалось получить число
+                    total += processorPrice;
+                }
+            });
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
 </html>
-

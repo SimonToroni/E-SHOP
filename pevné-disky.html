@@ -5,76 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vyberte pevný disk</title>
     <style>
-        .hdd {
+        .storage-drive {
             display: inline-block; 
             margin: 10px;
             width: 200px; 
             text-align: center;
+            cursor: pointer; 
         }
 
-        .hdd img {
+        .storage-drive img {
             max-width: 100px;
-        }
-
-        select {
-            width: 100%;
         }
     </style>
 </head>
 <body>
     <h1>Vyberte pevný disk</h1>
-    <div class="hdd">
+
+    <div class="storage-drive">
         <h2>Pevný disk 1</h2>
-        <img src="pevny_disk1.jpg" alt="Obrázek pevného disku 1">
-        <select id="hdd1">
-            <option value="0">Vyberte pevný disk</option>
-            <option value="50">Seagate Barracuda 1TB HDD - 50 Kč</option>
-            <option value="100">Western Digital Blue 500GB SSD - 100 Kč</option>
-            <option value="150">Samsung 970 EVO Plus 1TB SSD - 150 Kč</option>
-        </select>
+        <img src="" alt="Obrázek pevného disku 1">
+        <p>Seagate Barracuda 2TB</p>
     </div>
 
-    <div class="hdd">
+    <div class="storage-drive">
         <h2>Pevný disk 2</h2>
-        <img src="pevny_disk2.jpg" alt="Obrázek pevného disku 2">
-        <select id="hdd2">
-            <option value="0">Vyberte pevný disk</option>
-            <option value="60">Seagate FireCuda 2TB SSHD - 60 Kč</option>
-            <option value="110">Crucial MX500 1TB SSD - 110 Kč</option>
-            <option value="160">ADATA SU800 512GB SSD - 160 Kč</option>
-        </select>
+        <img src="" alt="Obrázek pevného disku 2">
+        <p>Western Digital Blue 1TB</p>
     </div>
 
-    <div class="hdd">
+    <div class="storage-drive">
         <h2>Pevný disk 3</h2>
-        <img src="pevny_disk3.jpg" alt="Obrázek pevného disku 3">
-        <select id="hdd3">
-            <option value="0">Vyberte pevný disk</option>
-            <option value="70">Western Digital Red 4TB HDD - 70 Kč</option>
-            <option value="120">Samsung 860 EVO 2TB SSD - 120 Kč</option>
-            <option value="170">Crucial P1 500GB NVMe SSD - 170 Kč</option>
-        </select>
+        <img src="" alt="Obrázek pevného disku 3">
+        <p>Samsung 970 EVO Plus 500GB</p>
+    </div>
+
+    <div class="storage-drive">
+        <h2>Pevný disk 4</h2>
+        <img src="" alt="Obrázek pevného disku 4">
+        <p>Crucial MX500 1TB</p>
+    </div>
+
+    <div class="storage-drive">
+        <h2>Pevný disk 5</h2>
+        <img src="" alt="Obrázek pevného disku 5">
+        <p>Kingston A2000 250GB</p>
+    </div>
+
+    <div class="storage-drive">
+        <h2>Pevný disk 6</h2>
+        <img src="" alt="Obrázek pevného disku 6">
+        <p>ADATA SU635 480GB</p>
     </div>
 
     <p id="totalPrice">Celková cena: 0 Kč</p>
 
     <script>
-        const hdd1Select = document.getElementById("hdd1");
-        const hdd2Select = document.getElementById("hdd2");
-        const hdd3Select = document.getElementById("hdd3");
+        const storageDrives = document.querySelectorAll(".storage-drive");
         const totalPrice = document.getElementById("totalPrice");
 
-        hdd1Select.addEventListener("change", updateTotalPrice);
-        hdd2Select.addEventListener("change", updateTotalPrice);
-        hdd3Select.addEventListener("change", updateTotalPrice);
+        storageDrives.forEach(drive => {
+            drive.addEventListener("click", updateTotalPrice);
+        });
 
         function updateTotalPrice() {
-            const price1 = parseFloat(hdd1Select.value);
-            const price2 = parseFloat(hdd2Select.value);
-            const price3 = parseFloat(hdd3Select.value);
-
-            const total = price1 + price2 + price3;
-
+            let total = 0;
+            storageDrives.forEach(drive => {
+                const driveText = drive.querySelector("p").textContent;
+                const drivePrice = parseInt(driveText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(drivePrice)) { // Проверяем, что удалось получить число
+                    total += drivePrice;
+                }
+            });
             totalPrice.textContent = `Celková cena: ${total} Kč`;
         }
     </script>

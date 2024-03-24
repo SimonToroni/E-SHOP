@@ -10,71 +10,72 @@
             margin: 10px;
             width: 200px; 
             text-align: center;
+            cursor: pointer; 
         }
 
         .case img {
             max-width: 100px;
         }
-
-        select {
-            width: 100%;
-        }
     </style>
 </head>
 <body>
     <h1>Vyberte skříň</h1>
+
     <div class="case">
         <h2>Skříň 1</h2>
-        <img src="skrin1.jpg" alt="Obrázek skříně 1">
-        <select id="case1">
-            <option value="0">Vyberte skříň</option>
-            <option value="80">Corsair Carbide Series 275R - 80 Kč</option>
-            <option value="120">NZXT H510 - 120 Kč</option>
-            <option value="160">Fractal Design Meshify C - 160 Kč</option>
-        </select>
+        <img src="" alt="Obrázek skříně 1">
+        <p>NZXT H510 ATX Mid Tower</p>
     </div>
 
     <div class="case">
         <h2>Skříň 2</h2>
-        <img src="skrin2.jpg" alt="Obrázek skříně 2">
-        <select id="case2">
-            <option value="0">Vyberte skříň</option>
-            <option value="100">Cooler Master MasterBox MB511 - 100 Kč</option>
-            <option value="140">Phanteks Eclipse P400A - 140 Kč</option>
-            <option value="180">Lian Li Lancool II Mesh - 180 Kč</option>
-        </select>
+        <img src="" alt="Obrázek skříně 2">
+        <p>Fractal Design Meshify C ATX Mid Tower</p>
     </div>
 
     <div class="case">
         <h2>Skříň 3</h2>
-        <img src="skrin3.jpg" alt="Obrázek skříně 3">
-        <select id="case3">
-            <option value="0">Vyberte skříň</option>
-            <option value="90">Deepcool MATREXX 55 - 90 Kč</option>
-            <option value="130">SilverStone FARA B1 - 130 Kč</option>
-            <option value="170">Antec NX310 - 170 Kč</option>
-        </select>
+        <img src="" alt="Obrázek skříně 3">
+        <p>Corsair 275R Airflow ATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 4</h2>
+        <img src="" alt="Obrázek skříně 4">
+        <p>Phanteks Eclipse P400A ATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 5</h2>
+        <img src="" alt="Obrázek skříně 5">
+        <p>Cooler Master MasterBox MB320L ARGB MicroATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 6</h2>
+        <img src="" alt="Obrázek skříně 6">
+        <p>Thermaltake S100 Snow Edition MicroATX Mid Tower</p>
     </div>
 
     <p id="totalPrice">Celková cena: 0 Kč</p>
 
     <script>
-        const case1Select = document.getElementById("case1");
-        const case2Select = document.getElementById("case2");
-        const case3Select = document.getElementById("case3");
+        const cases = document.querySelectorAll(".case");
         const totalPrice = document.getElementById("totalPrice");
 
-        case1Select.addEventListener("change", updateTotalPrice);
-        case2Select.addEventListener("change", updateTotalPrice);
-        case3Select.addEventListener("change", updateTotalPrice);
+        cases.forEach(caseItem => {
+            caseItem.addEventListener("click", updateTotalPrice);
+        });
 
         function updateTotalPrice() {
-            const price1 = parseFloat(case1Select.value);
-            const price2 = parseFloat(case2Select.value);
-            const price3 = parseFloat(case3Select.value);
-
-            const total = price1 + price2 + price3;
-
+            let total = 0;
+            cases.forEach(caseItem => {
+                const caseText = caseItem.querySelector("p").textContent;
+                const casePrice = parseInt(caseText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(casePrice)) { // Проверяем, что удалось получить число
+                    total += casePrice;
+                }
+            });
             totalPrice.textContent = `Celková cena: ${total} Kč`;
         }
     </script>
