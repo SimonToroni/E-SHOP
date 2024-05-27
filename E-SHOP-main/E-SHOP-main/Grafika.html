@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte grafickou kartu</title>
+    <style>
+        .graphics-card {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+            cursor: pointer; 
+        }
+
+        .graphics-card img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte grafickou kartu</h1>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 1</h2>
+        <img src="" alt="Obrázek grafické karty 1">
+        <p>NVIDIA GeForce RTX 3060</p>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 2</h2>
+        <img src="" alt="Obrázek grafické karty 2">
+        <p>NVIDIA GeForce RTX 3080</p>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 3</h2>
+        <img src="" alt="Obrázek grafické karty 3">
+        <p>NVIDIA GeForce GTX 1660</p>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 4</h2>
+        <img src="" alt="Obrázek grafické karty 4">
+        <p>NVIDIA GeForce RTX 3090</p>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 5</h2>
+        <img src="" alt="Obrázek grafické karty 5">
+        <p>AMD Radeon RX 6900 XT</p>
+    </div>
+
+    <div class="graphics-card">
+        <h2>Grafická karta 6</h2>
+        <img src="" alt="Obrázek grafické karty 6">
+        <p>NVIDIA GeForce RTX 3070</p>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const graphicsCards = document.querySelectorAll(".graphics-card");
+        const totalPrice = document.getElementById("totalPrice");
+
+        graphicsCards.forEach(card => {
+            card.addEventListener("click", updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            let total = 0;
+            graphicsCards.forEach(card => {
+                const cardText = card.querySelector("p").textContent;
+                const cardPrice = parseInt(cardText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(cardPrice)) { // Проверяем, что удалось получить число
+                    total += cardPrice;
+                }
+            });
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>

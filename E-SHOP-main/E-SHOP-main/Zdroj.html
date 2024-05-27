@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte zdroj</title>
+    <style>
+        .power-supply {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+            cursor: pointer; 
+        }
+
+        .power-supply img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte zdroj</h1>
+
+    <div class="power-supply">
+        <h2>Zdroj 1</h2>
+        <img src="" alt="Obrázek zdroje 1">
+        <p>Corsair RM750x 750W 80+ Gold</p>
+    </div>
+
+    <div class="power-supply">
+        <h2>Zdroj 2</h2>
+        <img src="" alt="Obrázek zdroje 2">
+        <p>EVGA Supernova 650 G5 650W 80+ Gold</p>
+    </div>
+
+    <div class="power-supply">
+        <h2>Zdroj 3</h2>
+        <img src="" alt="Obrázek zdroje 3">
+        <p>Seasonic Focus GX-850 850W 80+ Gold</p>
+    </div>
+
+    <div class="power-supply">
+        <h2>Zdroj 4</h2>
+        <img src="" alt="Obrázek zdroje 4">
+        <p>Thermaltake Toughpower GF1 650W 80+ Gold</p>
+    </div>
+
+    <div class="power-supply">
+        <h2>Zdroj 5</h2>
+        <img src="" alt="Obrázek zdroje 5">
+        <p>Cooler Master MWE Gold 750 V2 750W 80+ Gold</p>
+    </div>
+
+    <div class="power-supply">
+        <h2>Zdroj 6</h2>
+        <img src="" alt="Obrázek zdroje 6">
+        <p>be quiet! Straight Power 11 Platinum 650W 80+ Platinum</p>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const powerSupplies = document.querySelectorAll(".power-supply");
+        const totalPrice = document.getElementById("totalPrice");
+
+        powerSupplies.forEach(supply => {
+            supply.addEventListener("click", updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            let total = 0;
+            powerSupplies.forEach(supply => {
+                const supplyText = supply.querySelector("p").textContent;
+                const supplyPrice = parseInt(supplyText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(supplyPrice)) { // Проверяем, что удалось получить число
+                    total += supplyPrice;
+                }
+            });
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>

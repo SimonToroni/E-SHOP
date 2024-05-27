@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte paměť RAM</title>
+    <style>
+        .ram-module {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+            cursor: pointer; 
+        }
+
+        .ram-module img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte paměť RAM</h1>
+
+    <div class="ram-module">
+        <h2>RAM modul 1</h2>
+        <img src="" alt="Obrázek paměti RAM 1">
+        <p>Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 2</h2>
+        <img src="" alt="Obrázek paměti RAM 2">
+        <p>G.SKILL Ripjaws V 32GB (2x16GB) DDR4 3600MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 3</h2>
+        <img src="" alt="Obrázek paměti RAM 3">
+        <p>Crucial Ballistix 8GB DDR4 2666MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 4</h2>
+        <img src="" alt="Obrázek paměti RAM 4">
+        <p>Team T-FORCE Vulcan Z 16GB (2x8GB) DDR4 3000MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 5</h2>
+        <img src="" alt="Obrázek paměti RAM 5">
+        <p>HyperX Fury 32GB (2x16GB) DDR4 3200MHz</p>
+    </div>
+
+    <div class="ram-module">
+        <h2>RAM modul 6</h2>
+        <img src="" alt="Obrázek paměti RAM 6">
+        <p>Patriot Viper Steel 16GB (2x8GB) DDR4 4400MHz</p>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const ramModules = document.querySelectorAll(".ram-module");
+        const totalPrice = document.getElementById("totalPrice");
+
+        ramModules.forEach(module => {
+            module.addEventListener("click", updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            let total = 0;
+            ramModules.forEach(module => {
+                const moduleText = module.querySelector("p").textContent;
+                const modulePrice = parseInt(moduleText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(modulePrice)) { // Проверяем, что удалось получить число
+                    total += modulePrice;
+                }
+            });
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>

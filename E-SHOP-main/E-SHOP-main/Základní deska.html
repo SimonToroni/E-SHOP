@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte základní desku</title>
+    <style>
+        .motherboard {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+            cursor: pointer; 
+        }
+
+        .motherboard img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte základní desku</h1>
+
+    <div class="motherboard">
+        <h2>Základní deska 1</h2>
+        <img src="" alt="Obrázek základní desky 1">
+        <p>ASUS ROG Strix B550-F Gaming (Wi-Fi 6) ATX</p>
+    </div>
+
+    <div class="motherboard">
+        <h2>Základní deska 2</h2>
+        <img src="" alt="Obrázek základní desky 2">
+        <p>GIGABYTE B450 AORUS ELITE ATX</p>
+    </div>
+
+    <div class="motherboard">
+        <h2>Základní deska 3</h2>
+        <img src="" alt="Obrázek základní desky 3">
+        <p>MSI MAG B550M BAZOOKA Micro ATX</p>
+    </div>
+
+    <div class="motherboard">
+        <h2>Základní deska 4</h2>
+        <img src="" alt="Obrázek základní desky 4">
+        <p>ASRock B560M-HDV Micro ATX</p>
+    </div>
+
+    <div class="motherboard">
+        <h2>Základní deska 5</h2>
+        <img src="" alt="Obrázek základní desky 5">
+        <p>MSI MPG X570 GAMING PLUS ATX</p>
+    </div>
+
+    <div class="motherboard">
+        <h2>Základní deska 6</h2>
+        <img src="" alt="Obrázek základní desky 6">
+        <p>ASUS PRIME H410M-A Micro ATX</p>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const motherboards = document.querySelectorAll(".motherboard");
+        const totalPrice = document.getElementById("totalPrice");
+
+        motherboards.forEach(board => {
+            board.addEventListener("click", updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            let total = 0;
+            motherboards.forEach(board => {
+                const boardText = board.querySelector("p").textContent;
+                const boardPrice = parseInt(boardText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(boardPrice)) { // Проверяем, что удалось получить число
+                    total += boardPrice;
+                }
+            });
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte skříň</title>
+    <style>
+        .case {
+            display: inline-block; 
+            margin: 10px;
+            width: 200px; 
+            text-align: center;
+            cursor: pointer; 
+        }
+
+        .case img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vyberte skříň</h1>
+
+    <div class="case">
+        <h2>Skříň 1</h2>
+        <img src="" alt="Obrázek skříně 1">
+        <p>NZXT H510 ATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 2</h2>
+        <img src="" alt="Obrázek skříně 2">
+        <p>Fractal Design Meshify C ATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 3</h2>
+        <img src="" alt="Obrázek skříně 3">
+        <p>Corsair 275R Airflow ATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 4</h2>
+        <img src="" alt="Obrázek skříně 4">
+        <p>Phanteks Eclipse P400A ATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 5</h2>
+        <img src="" alt="Obrázek skříně 5">
+        <p>Cooler Master MasterBox MB320L ARGB MicroATX Mid Tower</p>
+    </div>
+
+    <div class="case">
+        <h2>Skříň 6</h2>
+        <img src="" alt="Obrázek skříně 6">
+        <p>Thermaltake S100 Snow Edition MicroATX Mid Tower</p>
+    </div>
+
+    <p id="totalPrice">Celková cena: 0 Kč</p>
+
+    <script>
+        const cases = document.querySelectorAll(".case");
+        const totalPrice = document.getElementById("totalPrice");
+
+        cases.forEach(caseItem => {
+            caseItem.addEventListener("click", updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            let total = 0;
+            cases.forEach(caseItem => {
+                const caseText = caseItem.querySelector("p").textContent;
+                const casePrice = parseInt(caseText.split("-")[1].trim()); // Получаем цену из текста
+                if (!isNaN(casePrice)) { // Проверяем, что удалось получить число
+                    total += casePrice;
+                }
+            });
+            totalPrice.textContent = `Celková cena: ${total} Kč`;
+        }
+    </script>
+</body>
+</html>
